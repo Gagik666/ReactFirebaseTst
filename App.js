@@ -1,12 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Todo } from './screen/Todo';
+import { Films } from './screen/Films';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarAllowFontScaling: true,
+          tabBarIcon: () => {
+            return
+          },
+          tabBarActiveTintColor: 'tomato',
+          tabBarInactiveTintColor: 'gray',
+        }}  
+      >
+        <Tab.Screen name="Todo" component={Todo} />
+        <Tab.Screen name="Films" component={Films} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
